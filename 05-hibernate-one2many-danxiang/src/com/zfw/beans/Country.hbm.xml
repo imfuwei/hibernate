@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zfw.beans">
+	<class name="Country">
+		<id name="cid">
+			<generator class="native" />
+		</id>
+		<property name="cname" />
+
+		<!-- 多的一方在一的一方关联的属性（对关联属性的映射） -->
+		<set name="ministers" cascade="save-update" inverse="true"><!--inverse="true" 表示一方放弃关联关系维护权 -->
+			<!-- 为多的一方设置一个外键字段 -->
+			<key column="countryId" />
+			<!-- 多的一方指的是哪个类 -->
+			<one-to-many class="Minister" />
+		</set>
+	</class>
+</hibernate-mapping>

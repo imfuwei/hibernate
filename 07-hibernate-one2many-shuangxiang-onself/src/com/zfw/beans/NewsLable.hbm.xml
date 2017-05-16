@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zfw.beans">
+	<class name="NewsLable">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="name" />
+		<property name="content" />
+		<!-- 站在一方的角度来为多方配置关联映射文件 -->
+		<set name="chirdNewsLables" cascade="save-update">
+			<key column="pid" />
+			<one-to-many class="NewsLable" />
+		</set>
+	<!-- 站在多方的角度来为一方配置关联映射文件 -->
+		<many-to-one name="parentNewsLable" column="pid" cascade="save-update"
+			class="NewsLable" />
+	</class>
+</hibernate-mapping>

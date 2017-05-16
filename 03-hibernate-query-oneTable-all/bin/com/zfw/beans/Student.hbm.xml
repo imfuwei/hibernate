@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 类名到表名的映射 -->
+	<class name="com.zfw.beans.Student" table="t_student">
+		<!-- 属性到字段的映射 -->
+		<id name="id" column="s_id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="s_name"/>
+		<property name="age" column="s_age" />
+		<property name="score" column="s_score" />
+	</class>
+	<query name="query_ByScore">from Student where score&lt;:myscope2</query>
+</hibernate-mapping>

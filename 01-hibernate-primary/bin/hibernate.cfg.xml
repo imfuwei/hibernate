@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 数据库四要素 -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/zfw?&amp;&amp;characterEncoding=utf-8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<!-- 方言 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<!-- 数据源，数据库连接池 -->
+		<property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+		
+		<!-- 当前Session上下文 ,可以配成thead，jta(java事务API),SpringSessionContext(ssh整合的时候用到) -->
+		<property name="hibernate.current_session_context_class">thread</property>
+		<!-- 自动建表 ,create(每运行一次把表删了再建，不管有没有数据),update(没有表则新建，有就往里更新数据)。可以从hibernate.properties中找到属性 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- 显示sql语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- 格式化sql语句 -->
+		<property name="hibernate.format_sql">true</property>
+		
+		
+		<!-- 注册映射文件 -->
+		<mapping resource="com/zfw/beans/Student.hbm.xml" />
+	</session-factory>
+	<security context=""></security>
+</hibernate-configuration>
